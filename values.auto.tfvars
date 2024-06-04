@@ -1,0 +1,10 @@
+resource_labels = { "provider" : "jx" }
+jx_git_url = "https://github.com/lftraining/jx3-gke-gsm"
+gcp_project = "fillit"
+cluster_name = "lfs268-lab"
+cluster_location  = "us-west1-a"
+gsm = true
+force_destroy = true
+delete_protect = false
+jx_bot_username = ""
+jx_bot_token = ""
