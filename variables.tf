@@ -44,7 +44,7 @@ variable "master_authorized_networks" {
 variable "node_machine_type" {
   description = "Node type for the Kubernetes cluster"
   type        = string
-  default     = "n1-standard-2"
+  default     = "n1-standard-4"
 }
 
 variable "initial_cluster_node_count" {
