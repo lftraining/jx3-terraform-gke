@@ -1,6 +1,6 @@
 resource_labels = { "provider" : "jx" }
 jx_git_url = "https://github.com/replaceWithyourOrg/jx3-gke-gsm"
-gcp_project = "fillit"
+gcp_project = "ReplaceWithYourGCPProjectID"
 cluster_name = "lfs268-lab"
 cluster_location  = "us-west1-a"
 gsm = true
