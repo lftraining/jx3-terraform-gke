@@ -1,5 +1,5 @@
 resource_labels = { "provider" : "jx" }
-jx_git_url = "https://github.com/lftraining/jx3-gke-gsm"
+jx_git_url = "https://github.com/replaceWithyourOrg/jx3-gke-gsm"
 gcp_project = "fillit"
 cluster_name = "lfs268-lab"
 cluster_location  = "us-west1-a"
