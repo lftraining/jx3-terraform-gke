@@ -71,6 +71,7 @@ replication {
     "managed-by" = "terraform"
     "purpose"    = "jenkins-x-lighthouse-oauth"
   }
+  deletion_protection = false
 }
 
 # Add a version to the Lighthouse OAuth secret with the token in JSON format
@@ -79,6 +80,7 @@ resource "google_secret_manager_secret_version" "lighthouse_oauth_secret_version
   secret_data = jsonencode({
     token = var.jx_bot_token
   })
+  deletion_protection = false
 }
 
 output "connect" {
