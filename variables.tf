@@ -95,6 +95,12 @@ variable "force_destroy" {
   default     = false
 }
 
+variable "delete_protect" {
+  description = "Flag to enable terraform destroy"
+  type        = bool
+  default     = false
+}
+
 variable "node_preemptible" {
   description = "Use preemptible nodes"
   type        = bool
