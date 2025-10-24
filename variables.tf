@@ -44,7 +44,7 @@ variable "master_authorized_networks" {
 variable "node_machine_type" {
   description = "Node type for the Kubernetes cluster"
   type        = string
-  default     = "n1-standard-4"
+  default     = "n1-standard-2"
 }
 
 variable "initial_cluster_node_count" {
@@ -178,3 +178,25 @@ variable "kuberhealthy" {
   default     = false
 }
 
+// GCP Artifact
+variable "artifact_location" {
+  description = "artifact registry repository Location"
+  type        = string
+  default     = "us-central1" 
+}
+variable "artifact_repository_id" {
+  description = "artifact registry repository Name"
+  type        = string
+  default     = "oci"
+}
+variable "artifact_description" {
+  description = "artifact registry repository Description"
+  type        = string
+  default     = "jenkins-x Docker Repository" 
+}
+
+variable "artifact_enable" {
+  description = "Create artifact registry repository"
+  type        = bool
+  default     = true
+}

@@ -6,5 +6,5 @@ cluster_location  = "us-west1-a"
 gsm = true
 force_destroy = true
 delete_protect = false
-jx_bot_username = ""
-jx_bot_token = ""
+jx_bot_username = "yourGithubUsername"
+jx_bot_token = "yourGithubAccessToken"

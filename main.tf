@@ -1,6 +1,6 @@
 module "jx" {
-  source                          = "github.com/jenkins-x/terraform-google-jx?ref=v1.11.6"
-  gcp_project                     = var.gcp_project
+  source                          = "github.com/jenkins-x/terraform-google-jx?ref=v1.12.6"
+ gcp_project                     = var.gcp_project
   master_authorized_networks = var.master_authorized_networks
   jx2                             = false
   gsm                             = var.gsm
@@ -28,6 +28,58 @@ module "jx" {
   node_preemptible                = var.node_preemptible
   kuberhealthy                    = var.kuberhealthy
   node_spot                       = var.node_spot
+  artifact_enable                 = var.artifact_enable
+  artifact_location               = var.artifact_location
+  artifact_repository_id          = var.artifact_repository_id
+
+}
+
+# Define the Google Secret Manager Secret for Lighthouse HMAC token
+resource "google_secret_manager_secret" "lighthouse_hmac_secret" {
+  project = var.gcp_project
+  secret_id = "lfs268-lab-lighthouse-hmac"
+
+replication {
+    auto {}
+  }
+  labels = {
+    "managed-by" = "terraform"
+    "purpose"    = "jenkins-x-lighthouse-hmac"
+  }
+}
+
+# Add a version to the Lighthouse HMAC secret with the token in JSON format
+resource "google_secret_manager_secret_version" "lighthouse_hmac_secret_version" {
+  secret = google_secret_manager_secret.lighthouse_hmac_secret.id
+  secret_data = jsonencode({
+    token = var.jx_bot_token
+  })
+}
+
+# Define the Google Secret Manager Secret for Lighthouse OAuth token
+resource "google_secret_manager_secret" "lighthouse_oauth_secret" {
+  project = var.gcp_project
+  secret_id = "lfs268-lab-lighthouse-oauth"
+
+
+replication {
+    auto {}
+  }
+
+  
+  labels = {
+    "managed-by" = "terraform"
+    "purpose"    = "jenkins-x-lighthouse-oauth"
+  }
+  
+}
+
+# Add a version to the Lighthouse OAuth secret with the token in JSON format
+resource "google_secret_manager_secret_version" "lighthouse_oauth_secret_version" {
+  secret = google_secret_manager_secret.lighthouse_oauth_secret.id
+  secret_data = jsonencode({
+    token = var.jx_bot_token
+  })
 }
 
 output "connect" {
