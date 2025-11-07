@@ -50,7 +50,7 @@ variable "node_machine_type" {
 variable "initial_cluster_node_count" {
   description = "initial number of cluster nodes"
   type        = number
-  default     = 3
+  default     = 4
 }
 
 variable "initial_primary_node_pool_node_count" {
